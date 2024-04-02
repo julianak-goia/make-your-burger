@@ -3,43 +3,44 @@ import PageTitle from "./components/PageTitle.vue";
 </script>
 
 <template>
-  <div class="container mx-auto h-screen flex items-center justify-center">
-    <div class="grid grid-cols-3 gap-8 w-full h-full py-20">
-      <div class="col-span-1 flex justify-center burger-image items-center">
-        <div class="elements-wrapper relative">
-          <img :src="pao[0]" class="pao-superior" />
-          <img :src="cebola" class="cebola" />
-          <img :src="tomate" class="tomate" />
-          <img :src="alface" class="alface" />
-          <img :src="hamburguer" class="burger" />
-          <img :src="queijo" class="queijo" />
-          <img :src="pao[1]" class="pao-inferior" />
+  <div class="grid grid-cols-3 gap-8 w-full">
+    <div class="col-span-1 flex justify-center burger-image items-center">
+      <div class="elements-wrapper relative">
+        <img :src="pao[0]" class="pao-superior" />
+        <img :src="cebola" class="cebola" />
+        <img :src="tomate" class="tomate" />
+        <img :src="alface" class="alface" />
+        <img :src="hamburguer" class="burger" />
+        <img :src="queijo" class="queijo" />
+        <img :src="pao[1]" class="pao-inferior" />
 
-          <!-- molhos -->
-          <img :src="ketchup" class="molho ketchup" />
-          <img :src="maionese" class="molho maionese" />
-          <img :src="mostarda" class="molho mostarda" />
-        </div>
+        <!-- molhos -->
+        <img :src="ketchup" class="molho ketchup" />
+        <img :src="maionese" class="molho maionese" />
+        <img :src="mostarda" class="molho mostarda" />
+      </div>
+    </div>
+
+    <div class="col-span-2">
+      <div class="mb-8 text-center">
+        <PageTitle
+          title="Make Your Burger"
+          description="Choose your ingredientes:"
+        />
       </div>
 
-      <div class="col-span-2">
-        <div class="mb-8 text-center">
-          <PageTitle
-            title="Make Your Burger"
-            description="Choose your ingredientes:"
-          />
-        </div>
-
-        <div class="bg-white opacity-90 p-8 gap-8">
+      <!-- ETAPA 1 -->
+      <div v-if="etapa === 1" class="elements-content">
+        <div class="flex flex-col gap-8 bg-white opacity-80 p-8 rounded-2xl">
           <!-- Tipo do pão -->
-          <div class="element-card">
-            <h4>TIPO DO PÃO</h4>
+          <div class="flex flex-col gap-3">
+            <h4>CHOOSE YOUR BREAD</h4>
             <div class="flex items-center gap-4">
-              <div>
+              <div class="flex items-center">
                 <input v-model="inputTipoPao" type="radio" value="gergelim" />
                 <label class="ml-2">Gergelim</label>
               </div>
-              <div>
+              <div class="flex items-center">
                 <input
                   v-model="inputTipoPao"
                   type="radio"
@@ -50,63 +51,121 @@ import PageTitle from "./components/PageTitle.vue";
             </div>
           </div>
           <!-- Toppings -->
-          <div class="element-card mt-8">
+          <div class="flex flex-col gap-3">
             <h4>TOPPINGS</h4>
             <div class="flex items-center gap-4">
-              <div>
+              <div class="flex items-center">
                 <input v-model="inputSalada" type="checkbox" value="alface" />
                 <label class="ml-2">Alface</label>
               </div>
-              <div>
+              <div class="flex items-center">
                 <input v-model="inputSalada" type="checkbox" value="tomate" />
                 <label class="ml-2">Tomate</label>
               </div>
-              <div>
+              <div class="flex items-center">
                 <input v-model="inputSalada" type="checkbox" value="queijo" />
                 <label class="ml-2">Queijo</label>
               </div>
-              <div>
+              <div class="flex items-center">
                 <input v-model="inputSalada" type="checkbox" value="cebola" />
                 <label class="ml-2">Cebola</label>
               </div>
             </div>
           </div>
           <!-- Tipo do molho -->
-          <div class="element-card mt-8">
-            <h4>MOLHOS</h4>
+          <div class="flex flex-col gap-3">
+            <h4>CHOOSE YOUR SAUCE</h4>
             <div class="flex items-center gap-4">
-              <div>
+              <div class="flex items-center">
                 <input v-model="inputMolhos" type="checkbox" value="ketchup" />
                 <label class="ml-2">Ketchup</label>
               </div>
-              <div>
+              <div class="flex items-center">
                 <input v-model="inputMolhos" type="checkbox" value="mostarda" />
                 <label class="ml-2">Mostarda</label>
               </div>
-              <div>
+              <div class="flex items-center">
                 <input v-model="inputMolhos" type="checkbox" value="maionese" />
                 <label class="ml-2">Maionese</label>
               </div>
             </div>
           </div>
           <!-- Tipo do hamburguer -->
-          <div class="element-card mt-8">
-            <h4>TIPO DE HAMBURGUER</h4>
+          <div class="flex flex-col gap-3">
+            <h4>CHOOSE YOUR HAMBURGER</h4>
             <div class="flex items-center gap-4">
-              <div>
+              <div class="flex items-center">
                 <input v-model="inputHamburguer" type="radio" value="bovino" />
                 <label class="ml-2">Bovino</label>
               </div>
-              <div>
+              <div class="flex items-center">
                 <input v-model="inputHamburguer" type="radio" value="frango" />
                 <label class="ml-2">Frango</label>
               </div>
-              <div>
+              <div class="flex items-center">
                 <input v-model="inputHamburguer" type="radio" value="soja" />
                 <label class="ml-2">Soja</label>
               </div>
             </div>
           </div>
+        </div>
+
+        <div class="div-btn-order pt-8">
+          <button type="button" class="btn-order" @click="fazerPedido">
+            Place an order
+          </button>
+        </div>
+      </div>
+
+      <!-- ETAPA 2  -->
+      <div v-if="etapa === 2" class="elements-content">
+        <div class="flex flex-col gap-8 bg-white opacity-80 p-8 rounded-2xl">
+          <div class="flex flex-col gap-3">
+            <h4>INFORME SEUS DADOS</h4>
+            <div class="flex flex-col gap-4">
+              <div class="flex flex-col gap-3">
+                <label class="form-label">Nome</label>
+                <input v-model="inputNome" class="form-control" type="text" />
+              </div>
+              <div class="flex flex-col gap-3">
+                <label class="form-label">Endereço</label>
+                <input
+                  v-model="inputEndereco"
+                  class="form-control"
+                  type="text"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-between pt-8">
+          <button type="button" class="btn-order" @click="etapa = etapa - 1">
+            Voltar para o lanche
+          </button>
+          <button type="button" class="btn-order" @click="confirmarPedido">
+            Confirmar
+          </button>
+        </div>
+      </div>
+
+      <!-- ETAPA 3  -->
+      <div v-if="etapa === 3" class="elements-content">
+        <div class="flex flex-col gap-8 bg-white opacity-80 p-8 rounded-2xl">
+          <div class="flex flex-col gap-3">
+            <h4>PEDIDO CONFIRMADO</h4>
+            <div class="flex flex-col gap-4">
+              <p>Agora é só aguardar 10 minutinhos!</p>
+              <p>Vamos chamar você em breve!</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-between pt-8">
+          <button type="button" class="btn-order" @click="etapa = 1">
+            Repetir pedido
+          </button>
+          <button type="button" class="btn-order" @click="novoPedido">
+            Novo pedido
+          </button>
         </div>
       </div>
     </div>
@@ -209,10 +268,68 @@ export default {
       }
     },
   },
+
+  methods: {
+    fazerPedido() {
+      if (this.inputTipoPao && this.inputHamburguer) {
+        this.etapa = 2;
+      } else {
+        alert("Você precisa selecionar no mínimo um pão e um hamburguer.");
+      }
+    },
+
+    confirmarPedido() {
+      if (this.inputNome && this.inputEndereco) {
+        this.etapa = 3;
+
+        //realizar uma requisição http enviando os dados do pedido para o backend da aplicação
+
+        // retorna para a etapa de fazer um pedido depois de 7s, se o usuario não apertar o botao de fazer um novo pedido ou repetir o pedido
+        this.novoPedidoAssincrono = setTimeout(() => this.novoPedido(), 7000);
+      } else {
+        alert("Você precisa informar o seu nome e endereço.");
+      }
+    },
+
+    novoPedido() {
+      this.etapa = 1;
+      this.inputTipoPao = "";
+      this.inputSalada = [];
+      this.inputMolhos = [];
+      this.inputHamburguer = "";
+      this.inputNome = "";
+      this.inputEndereco = "";
+    },
+  },
+
+  watch: {
+    etapa(novoValor) {
+      // elimina o setTimeout quando a etapa volta a ser 1
+      if (novoValor === 1) {
+        clearTimeout(this.novoPedidoAssincrono);
+      }
+    },
+  },
 };
 </script>
 
 <style scoped lang="css">
+.elements-content {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.div-btn-order {
+  display: flex;
+  justify-content: end;
+}
+
+.btn-order {
+  background-color: rgb(255, 255, 255, 0.9);
+  padding: 8px 15px;
+  border-radius: 8px;
+}
+
 .elements-wrapper {
   width: 48%;
   display: flex;
