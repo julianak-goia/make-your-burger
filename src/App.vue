@@ -3,7 +3,7 @@ import PageTitle from "./components/PageTitle.vue";
 </script>
 
 <template>
-  <div class="grid grid-cols-3 gap-8 w-full">
+  <div class="grid grid-cols-3 gap-8 w-full burger-content">
     <div class="col-span-1 flex justify-center burger-image items-center">
       <div class="elements-wrapper relative">
         <img :src="pao[0]" class="pao-superior" />
@@ -314,6 +314,7 @@ export default {
 </script>
 
 <style scoped lang="css">
+
 .elements-content {
   width: 80%;
   margin: 0 auto;
