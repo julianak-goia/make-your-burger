@@ -190,67 +190,67 @@ export default {
       switch (this.inputTipoPao) {
         case "gergelim":
           return [
-            "/src/assets/images/burger/pao-gergelim-superior.svg",
-            "/src/assets/images/burger/pao-gergelim-inferior.svg",
+            "/public/images/burger/pao-gergelim-superior.svg",
+            "/public/images/burger/pao-gergelim-inferior.svg",
           ];
         case "australiano":
           return [
-            "/src/assets/images/burger/pao-australiano-superior.svg",
-            "/src/assets/images/burger/pao-australiano-inferior.svg",
+            "/public/images/burger/pao-australiano-superior.svg",
+            "/public/images/burger/pao-australiano-inferior.svg",
           ];
         default:
           return [
-            "/src/assets/images/burger-base/pao-base-superior.svg",
-            "/src/assets/images/burger-base/pao-base-inferior.svg",
+            "/public/images/burger-base/pao-base-superior.svg",
+            "/public/images/burger-base/pao-base-inferior.svg",
           ];
       }
     },
 
     alface() {
       if (this.inputSalada.includes("alface")) {
-        return "/src/assets/images/burger/alface.svg";
+        return "/public/images/burger/alface.svg";
       }
-      return "/src/assets/images/burger-base/alface-base.svg";
+      return "/public/images/burger-base/alface-base.svg";
     },
 
     tomate() {
       if (this.inputSalada.includes("tomate")) {
-        return "/src/assets/images/burger/tomate.svg";
+        return "/public/images/burger/tomate.svg";
       }
-      return "/src/assets/images/burger-base/tomate-base.svg";
+      return "/public/images/burger-base/tomate-base.svg";
     },
 
     queijo() {
       if (this.inputSalada.includes("queijo")) {
-        return "/src/assets/images/burger/queijo.svg";
+        return "/public/images/burger/queijo.svg";
       }
-      return "/src/assets/images/burger-base/queijo-base.svg";
+      return "/public/images/burger-base/queijo-base.svg";
     },
 
     cebola() {
       if (this.inputSalada.includes("cebola")) {
-        return "/src/assets/images/burger/cebola.svg";
+        return "/public/images/burger/cebola.svg";
       }
-      return "/src/assets/images/burger-base/cebola-base.svg";
+      return "/public/images/burger-base/cebola-base.svg";
     },
 
     ketchup() {
       if (this.inputMolhos.includes("ketchup")) {
-        return "/src/assets/images/burger/ketchup.svg";
+        return "/public/images/burger/ketchup.svg";
       }
       return "";
     },
 
     maionese() {
       if (this.inputMolhos.includes("maionese")) {
-        return "/src/assets/images/burger/maionese.svg";
+        return "/public/images/burger/maionese.svg";
       }
       return "";
     },
 
     mostarda() {
       if (this.inputMolhos.includes("mostarda")) {
-        return "/src/assets/images/burger/mostarda.svg";
+        return "/public/images/burger/mostarda.svg";
       }
       return "";
     },
@@ -258,13 +258,13 @@ export default {
     hamburguer() {
       switch (this.inputHamburguer) {
         case "bovino":
-          return "/src/assets/images/burger/burger-bovino.svg";
+          return "/public/images/burger/burger-bovino.svg";
         case "frango":
-          return "/src/assets/images/burger/burger-frango.svg";
+          return "/public/images/burger/burger-frango.svg";
         case "soja":
-          return "/src/assets/images/burger/burger-soja.svg";
+          return "/public/images/burger/burger-soja.svg";
         default:
-          return "/src/assets/images/burger-base/burger-base.svg";
+          return "/public/images/burger-base/burger-base.svg";
       }
     },
   },
@@ -314,7 +314,6 @@ export default {
 </script>
 
 <style scoped lang="css">
-
 .elements-content {
   width: 80%;
   margin: 0 auto;
